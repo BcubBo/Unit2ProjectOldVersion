@@ -9,9 +9,8 @@
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
 
-<!--
-	<link rel="stylesheet" type="text/css" href="../css/styles.css">
-	-->
+
+	<!-- <link rel="stylesheet" type="text/css" href="../css/style.css"/> -->
 </head>
 <body>
 欢迎使用超市账单管理系统

@@ -27,15 +27,15 @@ public class characterEncodingFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		
-		System.out.println("request过滤器被调用>>>>>>>>>>>>>>>>>:<"+requestCount+">");
+		System.out.println("request过滤器被调用>>>>>>>>>>>>>>>>>:<"+(requestCount+=1)+">");
 		request.setCharacterEncoding("utf8");
-		System.out.println("request过滤器被终止>>>>>>>>>>>>>>>>>:<"+requestShutdownCount+">");
-		System.out.println("response过滤器被调用>>>>>>>>>>>>>>>>>:<"+responseCount+">");
+		System.out.println("request过滤器被终止>>>>>>>>>>>>>>>>>:<"+(requestShutdownCount+=1)+">");
+		System.out.println("response过滤器被调用>>>>>>>>>>>>>>>>>:<"+(responseCount+=1)+">");
 		response.setCharacterEncoding("utf8");
-		System.out.println("response过滤器被终止>>>>>>>>>>>>>>>>>:<"+responseShutdownCount+"<");
-		System.out.println("doFilter方法被调用执行过滤器链开始>>>>>>>>>>>>>>>>>:<"+chainCount+">");
+		System.out.println("response过滤器被终止>>>>>>>>>>>>>>>>>:<"+(responseShutdownCount+=1)+">");
+		System.out.println("doFilter方法被调用执行过滤器链开始>>>>>>>>>>>>>>>>>:<"+(chainCount+=1)+">");
 		chain.doFilter(request, response);
-		System.out.println("doFilter方法被终止执行过滤器链结束>>>>>>>>>>>>>>>>>:<"+chainShutdownCount+">");
+		System.out.println("doFilter方法被终止执行过滤器链结束>>>>>>>>>>>>>>>>>:<"+(chainShutdownCount+=1)+">");
 		
 	}
 

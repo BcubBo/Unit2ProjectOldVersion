@@ -33,6 +33,7 @@
 <!-- 使用frame进行创建 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<html><head><title>超市库存管理系统</title></head>
 <frameset rows="102,*">
 
 	<frame src="top.html" id="top"
@@ -43,15 +44,12 @@
 	<frame src="main.jsp" id="mainFrame" name="mainFrame" frameborder="0"/>
 	
 	</frameset>
-	
-
-
-
-
-
 
 
 </frameset>
+
+
+</html>
 
 
 

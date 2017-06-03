@@ -6,7 +6,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Insert title here</title>
-<link type="text/css" rel="stylesheet" href="../css/style.css">
+<link type="text/css" rel="stylesheet" href="../css/style.css"/>
 <script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
 </head>
 <body>
