@@ -7,33 +7,33 @@
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
 <script type="text/javascript">
 	function logout() {
-		top.location = "../login.jsp";
+		top.location = "${pageContext.request.contextPath}/login.jsp";
 	}
 </script>
 </head>
 <body class="frame-bd">
 	<ul class="left-menu">
 		<li><a href="billList.jsp" target="mainFrame"><img
-				src="../images/btn_bill.gif" />
+				src="${pageContext.request.contextPath}/images/btn_bill.gif" />
 		</a>
 		</li>
 		<li><a href="providerList.jsp" target="mainFrame"><img
-				src="../images/btn_suppliers.gif" />
+				src="${pageContext.request.contextPath}/images/btn_suppliers.gif" />
 		</a>
 		</li>
 		<li><a href="userList.jsp" target="mainFrame"><img
-				src="../images/btn_users.gif" />
+				src="${pageContext.request.contextPath}/images/btn_users.gif" />
 		</a>
 		</li>	
 		<li><a href="updatePwd.jsp" target="mainFrame"><img
-				src="../images/btn_password.gif" />
+				src="${pageContext.request.contextPath}/images/btn_password.gif" />
 		</a>
 		</li>
 		<li><a href="#" onClick="logout();"><img
-				src="../images/btn_exit.gif" />
+				src="${pageContext.request.contextPath}/images/btn_exit.gif" />
 		</a>
 		</li>
 	</ul>
