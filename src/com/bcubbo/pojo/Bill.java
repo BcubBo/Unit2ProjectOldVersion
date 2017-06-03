@@ -7,30 +7,23 @@ public class Bill {
 
 	private int id ;
 	//账单主键id
-	private String billCode;
-	//账单编码
-	private String productName;
-	//产品名称
-	private String productDesc;
-	//商品描述
-	private String productUnit;
-	//商品单位
-	private String productCount;
-	//商品总计
+	private String billCode,productName,productDesc,productUnit,productCount;
+	//账单编码billCode
+	//产品名称productName
+	//商品描述productDesc
+	//商品单位productUnit
+	//商品总计productCount
 	private BigDecimal totalPrice;
 	//商品总价
-	private int isPayment;
-	//是否付款
-	private int providerId;
-	//供应商id
-	private Date creationDate;
-	//创建时间
-	private int createBy;
-	//创建人
-	private Date modifyDate;
-	//修改日期
-	private int modifyBy;
-	//修改者
+	private int isPayment,providerId,createBy,modifyBy;
+	//是否付款isPayment
+	//供应商id,providerId
+	//创建人createBy
+	//修改者modifyBy
+	private Date creationDate,modifyDate;
+	//创建时间creationDate
+	//修改日期modifyDate
+	
 	public int getId() {
 		return id;
 	}

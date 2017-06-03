@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <listener>
+    <listener-class>com.bcubbo.listener.encodingListener</listener-class>   
+  </listener>
+  
+  
+  
+  <filter>
+    <filter-name>characterEncodingFilter</filter-name>
+    <filter-class>com.bcubbo.filter.characterEncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>characterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  
+  
   <display-name>Unit2Project</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -9,19 +26,5 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <listener>
-    <listener-class>com.bcubbo.listener.encoderListener001</listener-class>
-    
-  </listener>
   
-  
-  
-  <filter>
-    <filter-name>characterEncodingFilter</filter-name>
-    <filter-class>com.bcubbo.filter.chararcterEncodingFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>characterEncodingFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
 </web-app>

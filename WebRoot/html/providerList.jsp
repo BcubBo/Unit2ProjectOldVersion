@@ -5,7 +5,7 @@
 
 <html><head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>è¶å¸è´¦åç®¡çç³»ç»-ä¾åºåç®¡ç</title>
+<title>超市账单管理系统-供应商管理</title>
 <link type="text/css" rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -16,8 +16,8 @@
 			<tbody>
 				<tr>
 					<td><form method="post" action="provider.do">
-							<input name="method" value="query" class="input-text" type="hidden"> ä¾åºååç§°ï¼<input name="proName" class="input-text" type="text" value="">&nbsp;&nbsp;&nbsp;&nbsp;
-							<input value="æ¥ è¯¢" type="submit">
+							<input name="method" value="query" class="input-text" type="hidden"> 供应商名称：<input name="proName" class="input-text" type="text" value="">&nbsp;&nbsp;&nbsp;&nbsp;
+							<input value="查 询" type="submit">
 						</form>
 					</td>
 				</tr>
@@ -27,35 +27,35 @@
 	<div class="main">
 
 		<div class="optitle clearfix">
-			<em><input value="æ·»å ä¾åºå" class="input-button" onclick="window.location='providerAdd.html'" type="button">
+			<em><input value="添加供应商" class="input-button" onclick="window.location='providerAdd.html'" type="button">
 			</em>
-			<div class="title">ä¾åºåç®¡ç&gt;&gt;</div>
+			<div class="title">供应商管理&gt;&gt;</div>
 		</div>
 		<div class="content">
 			<table class="list">
 				<tbody>
 					<tr>
-						<td width="70" height="29"><div class="STYLE1" align="center">ç¼å·</div>
+						<td width="70" height="29"><div class="STYLE1" align="center">编号</div>
 						</td>
-						<td width="80"><div class="STYLE1" align="center">ä¾åºååç§°</div>
+						<td width="80"><div class="STYLE1" align="center">供应商名称</div>
 						</td>
-						<td width="80"><div class="STYLE1" align="center">èç³»äºº</div>
+						<td width="80"><div class="STYLE1" align="center">联系人</div>
 						</td>
-						<td width="100"><div class="STYLE1" align="center">èç³»çµè¯</div>
+						<td width="100"><div class="STYLE1" align="center">联系电话</div>
 						</td>
-						<td width="100"><div class="STYLE1" align="center">ä¼ ç</div>
+						<td width="100"><div class="STYLE1" align="center">传真</div>
 						</td>
-						<td width="100"><div class="STYLE1" align="center">æä½æ¶é´</div>
+						<td width="100"><div class="STYLE1" align="center">操作时间</div>
 						</td>
 					</tr>
 					
 					<tr>
 						<td height="23"><span class="STYLE1">5</span>
 						</td>
-						<td><span class="STYLE1"><a href="providerView.html" style="color:red"> åäº¬å¸ç²®æ²¹æ»å¬å¸</a>
+						<td><span class="STYLE1"><a href="providerView.html" style="color:red"> 北京市粮油总公司</a>
 						</span>
 						</td>
-						<td><span class="STYLE1"> é»ä¸æ¸</span>
+						<td><span class="STYLE1"> 黄上清</span>
 						</td>
 						<td><span class="STYLE1">18900000000</span>
 						</td>
@@ -68,10 +68,10 @@
 					<tr>
 						<td height="23"><span class="STYLE1">7</span>
 						</td>
-						<td><span class="STYLE1"><a href="provider.do?method=getInfo&amp;proId=7"> é¯é¸å¸äºå¾å©é¢ç²å</a>
+						<td><span class="STYLE1"><a href="provider.do?method=getInfo&amp;proId=7"> 邯郸市五得利面粉厂</a>
 						</span>
 						</td>
-						<td><span class="STYLE1"> ç¨æµ·æ´</span>
+						<td><span class="STYLE1"> 程海洋</span>
 						</td>
 						<td><span class="STYLE1">18900000000</span>
 						</td>
@@ -84,10 +84,10 @@
 					<tr>
 						<td height="23"><span class="STYLE1">6</span>
 						</td>
-						<td><span class="STYLE1"><a href="provider.do?method=getInfo&amp;proId=6"> é¡ºä¹çäº¬å¤éæ¹å3é¨</a>
+						<td><span class="STYLE1"><a href="provider.do?method=getInfo&amp;proId=6"> 顺义燕京啤酒批发3部</a>
 						</span>
 						</td>
-						<td><span class="STYLE1"> æ¨å</span>
+						<td><span class="STYLE1"> 杨光</span>
 						</td>
 						<td><span class="STYLE1">18900000000</span>
 						</td>

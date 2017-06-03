@@ -6,11 +6,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>ç³»ç»ç»å½ - è¶å¸è´¦åç®¡çç³»ç»</title>
+<title>系统登录 - 超市账单管理系统</title>
 <link type="text/css" rel="stylesheet" href="css/style.css" />
 <script type="text/javascript">
   function validate(){
-		window.location.href="frame.jsp"
+		window.location.href="html/frame.jsp"
 	}
   </script>
 </head>
@@ -20,14 +20,14 @@
 	<div class="login-box">
 		<form  action=""  name="actionForm" id="actionForm"  method="post" >
 			<dl>
-				<dt>ç¨æ·åï¼</dt>
+				<dt>用户名：</dt>
 				<dd><input type="text" class="input-text" /> <span id="loginNameSpan"></span></dd>
-				<dt>å¯ãç ï¼</dt>
+				<dt>密　码：</dt>
 				<dd><input type="password"  class="input-text" /><span id="passwordSpan"></span></dd>
 			</dl>
 			<div class="buttons">
-				<input type="button"   value="ç»å½ç³»ç»" class="input-button" onclick="validate();" />
-				<input type="reset"  value="éããå¡«" class="input-button" />
+				<input type="button"   value="登录系统" class="input-button" onclick="validate();" />
+				<input type="reset"  value="重　　填" class="input-button" />
 			</div>
 		</form>
 	</div>

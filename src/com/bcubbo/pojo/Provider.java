@@ -4,29 +4,21 @@ import java.util.Date;
 
 public class Provider {
 	
-	private int id;
+	private int id,createBy,modifyBy;
 	//供应商主键id
-	private String proCode;
-	//供应商编码
-	private String proName;
-	//供应商名称
-	private String proDesc;
-	//供应商描述
-	private String proContact;
-	//供应商联系人
-	private String proPhone;
-	//供应商联系电话
-	private String proAddress;
-	//供应商地址
-	private String proFax;
-	//供应商传真
-	private int createBy;
 	//创建者
-	private Date creationDate;
-	//创建日期
-	private int modifyBy;
 	//修改者
-	private Date modifyDate;
+	private String proCode,proName,proDesc,proContact,proPhone,proAddress,proFax;
+	//供应商编码
+	//供应商名称
+	//供应商描述
+	//供应商联系人
+	//供应商联系电话
+	//供应商地址
+	//供应商传真
+
+	private Date creationDate,modifyDate;
+	//创建日期
 	//修改日期
 	public int getId() {
 		return id;

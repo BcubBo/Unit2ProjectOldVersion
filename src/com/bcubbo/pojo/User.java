@@ -4,32 +4,29 @@ import java.util.Date;
 
 public class User {
 	
-	private  int id;
+	private  int id,gender,userType,createBy,modifyBy;
 	//用户id
-	private  String userCode;
-	//用户编码
-	private  String userName;
-	//用户名称
-	private  String userPassword;
-	//用户密码
-	private  int gender;
+
 	//性别
-	private  Date bornDate;
-	//出生日期
-	private  String phone;
-	//电话
-	private  String address;
-	//地址
-	private  int userType;
 	//用户类别
-	private  int createBy;
 	//创建者
-	private  Date creationDate;
-	//创建时间
-	private  int modifyBy;
 	//更新者
-	private  Date modifyDate;
+	private  String userCode,userName,userPassword,phone,address;
+	//用户编码
+	//用户名称
+	//用户密码
+	//电话
+	//地址
+
+	private  Date bornDate,creationDate,modifyDate;
+	//出生日期
+	//创建时间
 	//更新时间
+
+
+	
+
+
 	public int getId() {
 		return id;
 	}
