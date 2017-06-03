@@ -13,7 +13,8 @@ import javax.servlet.annotation.WebFilter;
  * Servlet Filter implementation class characterEncodingFilter
  */
 public class characterEncodingFilter implements Filter {
-
+	public int requestCount,requestShutdownCount,responseCount,responseShutdownCount,
+	chainCount,chainShutdownCount = 0;
     public characterEncodingFilter() {
     	
     	
@@ -25,16 +26,16 @@ public class characterEncodingFilter implements Filter {
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		
+		System.out.println("request过滤器被调用>>>>>>>>>>>>>>>>>:<"+requestCount+">");
 		request.setCharacterEncoding("utf8");
-		System.out.println("过滤器被调用>>>>>>>>>>>>>>>>>");
+		System.out.println("request过滤器被终止>>>>>>>>>>>>>>>>>:<"+requestShutdownCount+">");
+		System.out.println("response过滤器被调用>>>>>>>>>>>>>>>>>:<"+responseCount+">");
 		response.setCharacterEncoding("utf8");
-		
-		
-		
+		System.out.println("response过滤器被终止>>>>>>>>>>>>>>>>>:<"+responseShutdownCount+"<");
+		System.out.println("doFilter方法被调用执行过滤器链开始>>>>>>>>>>>>>>>>>:<"+chainCount+">");
 		chain.doFilter(request, response);
-		
-		System.out.println("过滤器调用结束>>>>>>>>>>>>>>>>>");
-		
+		System.out.println("doFilter方法被终止执行过滤器链结束>>>>>>>>>>>>>>>>>:<"+chainShutdownCount+">");
 		
 	}
 
