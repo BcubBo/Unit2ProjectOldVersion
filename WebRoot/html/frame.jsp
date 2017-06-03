@@ -31,14 +31,16 @@
 </html> -->
 
 <!-- 使用frame进行创建 -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <frameset rows="102,*">
 
 	<frame src="top.html" id="top"
 	/>
 	<frameset cols="20%,*">
 	
-	<frame src="left.html" id="left" noresize frameborder="0"/>
-	<frame src="main.html" id="mainFrame" name="mainFrame" frameborder="0"/>
+	<frame src="left.jsp" id="left" noresize frameborder="0"/>
+	<frame src="main.jsp" id="mainFrame" name="mainFrame" frameborder="0"/>
 	
 	</frameset>
 	

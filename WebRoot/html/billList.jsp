@@ -1,4 +1,10 @@
-<html><head>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+
+<html>
+
+<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>超市账单管理系统-账单管理</title>
 <link type="text/css" rel="stylesheet" href="../css/style.css">
