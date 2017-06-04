@@ -2,9 +2,9 @@ package com.bcubbo.tools;
 
 public class Singleton {
 
-	private static Singleton singleton;
+	//private static Singleton singleton;
 	
-	static{
+	/*tatic{
 		
 		System.out.println("static静态代码块");
 		singleton = new Singleton();
@@ -35,7 +35,7 @@ public class Singleton {
 	//双重校验锁
 	//针对懒汉模式
 	
-	/*private Singleton(){};
+	private Singleton(){};
 	
 	public static Singleton getInstance(String threadNo){
 		
@@ -53,7 +53,34 @@ public class Singleton {
 		}
 		
 		return singleton;
-	};*/
+	};
+	
+	*/
+	//静态内部类达到了lazy loading 即延迟加载
+	private static Singleton singleton;
+	private Singleton(){};
+	private static class SingletonHelper{
+		
+		private static final Singleton INSTANCE = new Singleton();
+	}
+	
+	public static Singleton getInstance(){
+		
+		return SingletonHelper.INSTANCE;
+		//实现了延迟加载的特性
+		
+		
+		
+	};
+	
+	public static void test(){
+		
+		System.out.println("test======"+singleton.toString());
+		
+		
+	};
+	
+	
 	
 	
 	

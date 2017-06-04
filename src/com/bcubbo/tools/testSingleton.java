@@ -5,7 +5,7 @@ public class testSingleton {
 	public static void main(String []args){
 		
 		
-		Singleton.test();
+		System.out.println(Singleton.getInstance());
 		
 		
 	};
