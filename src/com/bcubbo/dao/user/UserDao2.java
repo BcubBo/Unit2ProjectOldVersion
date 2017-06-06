@@ -21,20 +21,18 @@ public class UserDao2 {
 			//开启jdbc的事务管理，设置自动提交为false
 			//userDao.add();
 			String sql = "insert into smbms_user (userCode,userName) values(?,?)";
-			preparedStatement = connection.prepareStatement(sql);
 			
-			preparedStatement.setString(1,"1001");
-			preparedStatement.setString(2,"userName2");
-			updateRows = preparedStatement.executeUpdate();
+			Object[] params = {"1001","userName2"};
+			updateRows = BaseDao.executeSql(connection, preparedStatement, sql, params);
+			
 			//providerDao.add();第二张表
 			String sql2 = "insert into smbms_provider(proCode,proName)values(?,?)";
-			preparedStatement = connection.prepareStatement(sql2);
-			preparedStatement.setString(1, "2001");
-			preparedStatement.setString(2, "productName");
+			Object[] params2 = {"2001","productName"};
+			updateRows = BaseDao.executeSql(connection, preparedStatement, sql2, params2);
 		
-			updateRows = preparedStatement.executeUpdate();
 			connection.commit();
 			//commit块不要写错位置
+			//超级封装
 			if(updateRows>0){
 				
 				System.out.println(">>>>>>>>add success!");
@@ -61,17 +59,10 @@ public class UserDao2 {
 				e1.printStackTrace();
 			};
 		}finally{
+			//未完成的代码块，还需要添加preparedStatment的关闭方法
+			BaseDao.closeResource(connection, preparedStatement, null);
+			//参数也可以传null
 			
-			try{
-				
-				preparedStatement.close();
-				//connection.close();
-				
-				
-			}catch(Exception e){
-	
-				e.printStackTrace();
-			}
 			
 		};
 		
