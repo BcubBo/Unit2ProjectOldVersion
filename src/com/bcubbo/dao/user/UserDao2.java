@@ -6,19 +6,27 @@ import java.sql.PreparedStatement;
 
 import com.bcubbo.dao.BaseDao;
 import com.bcubbo.dao.ConfigManager;
+import com.bcubbo.pojo.User;
 
 public class UserDao2 {
-	public Connection connection;
-	public PreparedStatement preparedStatement;
+
 	int updateRows = 0;
 	public int add(){
-		
-		
-		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		UserDao  userDao = new UserDaoImpl();
+		//多态，父类类型引用子类对象
 		try {
 			connection  = BaseDao.getConnection();
+			//获取单例模式链接
 			connection.setAutoCommit(false);
-			//开启jdbc的事务管理，设置自动提交为false
+			
+			User user = new User();
+			user.setUserCode("userCode2");
+			user.setUserName("用户2");
+			
+			updateRows = userDao.add(connection,user);
+/*			//开启jdbc的事务管理，设置自动提交为false
 			//userDao.add();
 			String sql = "insert into smbms_user (userCode,userName) values(?,?)";
 			
@@ -28,7 +36,7 @@ public class UserDao2 {
 			//providerDao.add();第二张表
 			String sql2 = "insert into smbms_provider(proCode,proName)values(?,?)";
 			Object[] params2 = {"2001","productName"};
-			updateRows = BaseDao.executeSql(connection, preparedStatement, sql2, params2);
+			updateRows = BaseDao.executeSql(connection, preparedStatement, sql2, params2);*/
 		
 			connection.commit();
 			//commit块不要写错位置
