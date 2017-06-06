@@ -8,6 +8,25 @@ import com.bcubbo.dao.user.UserDao;
 import com.bcubbo.dao.user.UserDaoImpl;
 import com.bcubbo.pojo.User;
 
+/**
+ * service层捕获异常，进行事务处理
+ * 事务处理：调用不同dao的多个方法，必须使用同一个conneciton（conneciton作为参数传递）
+ * 事务完成之后，需要在service层进行connection 的关闭，在dao层关闭(PreparedStatement和ResultSet对象）
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+
+
+
+
+
 public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 	public UserServiceImpl(){
@@ -19,8 +38,7 @@ public class UserServiceImpl implements UserService {
 	public boolean add(User user) {
 		
 		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		UserDao  userDao = new UserDaoImpl();
+		//UserDao  userDao = new UserDaoImpl();
 		int updateRows = 0;
 		boolean result = false;
 		//多态，父类类型引用子类对象

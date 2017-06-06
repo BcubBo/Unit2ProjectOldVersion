@@ -17,6 +17,7 @@ public class UserDaoImpl implements UserDao{
 		
 		updateRows = BaseDao.executeSql(connection, preparedStatement, sql, params);
 		BaseDao.closeResource(null, preparedStatement, null);
+		//在此关闭preparedStatement因为sql语句已经使用完毕
 		
 		
 		

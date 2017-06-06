@@ -10,7 +10,10 @@
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
 <script type="text/javascript">
   function validate(){
-		window.location.href="html/frame.jsp"
+		//window.location.href="html/frame.jsp"
+		var actionForm = document.getElementById("actionForm");
+		actionForm.submit();
+		
 	}
   </script>
 </head>
@@ -18,12 +21,12 @@
 <div id="login">
 	<div class="icon"></div>
 	<div class="login-box">
-		<form  action=""  name="actionForm" id="actionForm"  method="post" >
+		<form  action="${pageContext.request.contextPath }/login.do"  name="actionForm" id="actionForm"  method="post" >
 			<dl>
 				<dt>用户名：</dt>
-				<dd><input type="text" class="input-text" /> <span id="loginNameSpan"></span></dd>
+				<dd><input type="text" class="input-text" id="userCode" name="userCode"/> <span id="userCodeSpan"></span></dd>
 				<dt>密　码：</dt>
-				<dd><input type="password"  class="input-text" /><span id="passwordSpan"></span></dd>
+				<dd><input type="password"  class="input-text" id="userPassword" name="userPassword"/><span id="userPasswordSpan"></span></dd>
 			</dl>
 			<div class="buttons">
 				<input type="button"   value="登录系统" class="input-button" onclick="validate();" />

@@ -10,7 +10,7 @@ import com.bcubbo.dao.ConfigManager;
 
 /**
  * 
- * 操作数据库的基类--静态类，静态是非全局唯一，
+ * 操作数据库的基类--静态类，静态是非全局唯一非单例因为每个线程都需要单独的connection，而不是大家用一个connection
  * 单例模式是唯一存在的。
  * 
  * 
@@ -36,6 +36,7 @@ public class BaseDao {
 		String driver,url,user,password;
 		ConfigManager conManInstance = ConfigManager.getInstance();
 		//获取实例
+
 		driver = conManInstance.getValue("driver");
 		url = conManInstance.getValue("url");
 		user = conManInstance.getValue("user");
