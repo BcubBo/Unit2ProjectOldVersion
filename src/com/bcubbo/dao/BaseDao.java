@@ -63,6 +63,7 @@ public class BaseDao {
 			try {
 				resultSets.close();
 				resultSets = null;//GC回收
+				System.out.println("关闭resultSets成功");
 			} catch (SQLException e) {
 				e.printStackTrace();
 				flag = false;
@@ -75,6 +76,7 @@ public class BaseDao {
 			try {
 				preparedStatement.close();
 				preparedStatement = null;//GC回收
+				System.out.println("关闭preparedStatement成功");
 			} catch (SQLException e) {
 				e.printStackTrace();
 				flag = false;
@@ -87,6 +89,7 @@ public class BaseDao {
 			try {
 				connection.close();
 				connection = null;//GC回收
+				System.out.println("关闭connection成功");
 			} catch (SQLException e) {
 				e.printStackTrace();
 				flag = false;

@@ -2,6 +2,7 @@
     <wb-module deploy-name="Unit2ProjectOldVersion">
         <wb-resource deploy-path="/" source-path="/WebRoot" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/test"/>
         <property name="context-root" value="Unit2ProjectOldVersion"/>
         <property name="java-output-path" value="/Unit2ProjectOldVersion/build/classes"/>
     </wb-module>

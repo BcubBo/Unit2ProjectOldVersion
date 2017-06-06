@@ -16,7 +16,7 @@ public class UserDaoImpl implements UserDao{
 		Object [] params = {user.getUserCode(),user.getUserName()};
 		
 		updateRows = BaseDao.executeSql(connection, preparedStatement, sql, params);
-		
+		BaseDao.closeResource(null, preparedStatement, null);
 		
 		
 		
