@@ -11,8 +11,35 @@
 <script type="text/javascript">
   function validate(){
 		//window.location.href="html/frame.jsp"
+		//验证
+		
+		var userCode = document.getElementById("userCode").value;
+		var userPassword = document.getElementById("userPassword").value;
+		
+		var userCodeSpan = document.getElementById("userCodeSpan");
+		
+		var userPasswordSpan = document.getElementById("userPasswordSpan");
+		var flag = true;
+		
+		if(userCode == null || userCode ==""){
+			
+			userCodeSpan.innerHTML = "请输入用户名";
+			flag =false;
+		}
+		if(userPassword ==null || userPassword==""){
+			
+			userPasswordSpan.innerHTML = "请输入密码";
+			flag =false;
+		}
+		
 		var actionForm = document.getElementById("actionForm");
-		actionForm.submit();
+		if(flag){
+			actionForm.submit();
+		}
+		
+		
+		
+		//提交
 		
 	}
   </script>

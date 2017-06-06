@@ -105,5 +105,10 @@ public class UserServiceImpl implements UserService {
 		
 		return result;
 	}
+	public User login(String userCode, String userPassword) {
+		
+		
+		return null;
+	}
 
 }
