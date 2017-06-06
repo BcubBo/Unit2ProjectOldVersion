@@ -22,7 +22,23 @@ public interface UserDao {
 	public int add(Connection connection,User user) throws Exception;
 	
 	
-	
+	/**
+	 * 
+	 * 
+	 * 通过userCode获取user
+	 * @param connection
+	 * @param userCode
+	 * @return 
+	 * @throws Exception
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 */
 	public User getLoginUser(Connection connection,String userCode)throws Exception;
 	
 	
