@@ -100,7 +100,7 @@ public class UserDaoImpl implements UserDao{
 				_user.setUserName(resultSets.getString("userName"));
 				_user.setGender(resultSets.getInt("gender"));
 				_user.setPhone(resultSets.getString("phone"));
-				_user.setDate(resultSets.getDate("birthday"));
+				_user.setDate(resultSets.getDate("bornDate"));
 				_user.setUserType(resultSets.getInt("userType"));
 				
 				userList.add(_user);

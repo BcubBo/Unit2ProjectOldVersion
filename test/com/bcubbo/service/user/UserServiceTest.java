@@ -1,6 +1,7 @@
 package com.bcubbo.service.user;
 
-import static org.junit.Assert.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -33,5 +34,14 @@ public class UserServiceTest {
 		Assert.assertTrue("增加失败",result);
 		
 	}
+	@Test
+	public void testGetUserList(){
+		//测试方法，只将该方法的必要条件列出即可
+		List<User> userList = new ArrayList<User>();
+		userList = userService.getUserList("user");
+		Assert.assertEquals(4, userList.size());
+		
+		
+	};
 
 }
