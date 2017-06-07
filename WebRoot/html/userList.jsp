@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
 
@@ -8,7 +9,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>超市账单管理系统-用户管理</title>
-<link type="text/css" rel="stylesheet" href="../css/style.css">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 
 
 </head>
@@ -39,19 +40,21 @@
 			<table class="list">
 				<tbody>
 					<tr>
-						<td width="70" height="29"><div class="STYLE1" align="center">编号</div>
+						<td width="70" height="29"><div  align="center">编号</div>
 						</td>
-						<td width="80"><div class="STYLE1" align="center">用户名</div>
+						<td width="80"><div align="center">用户名</div>
 						</td>
-						<td width="80"><div class="STYLE1" align="center">用户账号</div>
+						<td width="80"><div  align="center">用户账号</div>
 						</td>
-						<td width="100"><div class="STYLE1" align="center">性别</div>
+						<td width="100"><div  align="center">性别</div>
 						</td>
-						<td width="100"><div class="STYLE1" align="center">年龄</div>
+						<td width="100"><div  align="center">年龄</div>
 						</td>
-						<td width="150"><div class="STYLE1" align="center">电话</div>
+						<td width="150"><div  align="center">电话</div>
 						</td>
-						<td width="150"><div class="STYLE1" align="center">权限</div>
+						<td width="150"><div  align="center">用户类型</div>
+						</td>
+						<td width="150"><div  align="center">操作</div>
 						</td>
 					</tr>
 					
@@ -87,36 +90,7 @@
 					</tr>
 					
 					
-					<tr>
-						<td height="23"><span class="STYLE1">1</span>
-						</td>
-						<td><span class="STYLE1"> 秦守新 </span>
-						</td>
-						<td><span class="STYLE1"><a href="userView.html"  style="color:red"> shouxin.qin</a>
-						</span>
-						</td>
 
-						<td><span class="STYLE1">
-						
-							男
-							
-						
-						 </span>
-						</td>
-						<td><span class="STYLE1"> 2</span>
-						</td>
-						<td><span class="STYLE1">111</span>
-						</td>
-						<td><span class="STYLE1">
-						
-						
-							
-							普通员工
-							
-						
-					     </span>
-						</td>
-					</tr>
 					
 					
 					

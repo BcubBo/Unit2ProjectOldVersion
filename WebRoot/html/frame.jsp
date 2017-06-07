@@ -36,7 +36,7 @@
 <html><head><title>超市库存管理系统</title></head>
 <frameset rows="102,*">
 
-	<frame src="top.html" id="top"
+	<frame src="top.jsp" id="top"
 	/>
 	<frameset cols="20%,*">
 	

@@ -2,6 +2,7 @@ package com.bcubbo.service.user;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.List;
 
 import com.bcubbo.dao.BaseDao;
 import com.bcubbo.dao.user.UserDao;
@@ -106,9 +107,60 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 	public User login(String userCode, String userPassword) {
+		Connection connection = null;
+		User user = null;
+		try{
+			
+			connection = BaseDao.getConnection();
+			user = userDao.getLoginUser(connection, userCode);
+			System.out.println("UserserviceImpl中的user对象的值为>>>>>>>"+user);
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+			
+		}finally{
+			BaseDao.closeResource(connection, null, null);
+			
+		};
+		if(null != user){
+			if(!user.getUserPassword().equals(userPassword)){
+				
+				user = null;
+				
+				
+			};
+				
+			
+			
+			
+		};
+		return user;
+	}
+	public List<User> getUserList(String queryUserName) {
+		Connection connection = null;
+		List<User> userList = null;
+		System.out.println("queryUserName>>>>>"+queryUserName);
+		if(queryUserName ==null){
+			queryUserName = "";
+		};
+		try{
+			
+			connection = BaseDao.getConnection();
+			userList = userDao.getUserList(connection,queryUserName);
+			
+			
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+		}finally{
+			
+			BaseDao.closeResource(connection, null, null);
+			
+		};
 		
-		
-		return null;
+		return userList;
 	}
 
 }

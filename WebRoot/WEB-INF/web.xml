@@ -8,7 +8,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-    <display-name>Unit2Project</display-name>
+  <display-name>Unit2Project</display-name>
   <listener>
     <listener-class>com.bcubbo.listener.encodingListener</listener-class>
   </listener>
@@ -21,17 +21,24 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
   <servlet>
-  	<servlet-name>LoginServlet</servlet-name>
-  	<servlet-class>com.bcubbo.servlet.LoginServlet</servlet-class>
-  
-  
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.bcubbo.servlet.LoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login.do</url-pattern>
+  </servlet-mapping>
   
-  	<servlet-name>LoginServlet</servlet-name>
-  	<url-pattern>/login.do</url-pattern>
+  
+  <servlet>
+  	<servlet-name>LogoutServlet</servlet-name>
+  	<servlet-class>com.bcubbo.servlet.LogoutServlet</servlet-class>
+  
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>LogoutServlet</servlet-name>
+  	<url-pattern>/logout.do</url-pattern>
   
   </servlet-mapping>
-
-
 </web-app>

@@ -10,7 +10,7 @@
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
 <script type="text/javascript">
 	function logout() {
-		top.location = "${pageContext.request.contextPath}/login.jsp";
+		top.location = "${pageContext.request.contextPath}/logout.do";
 	}
 </script>
 </head>

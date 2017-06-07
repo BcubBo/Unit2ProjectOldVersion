@@ -56,6 +56,7 @@
 				<dd><input type="password"  class="input-text" id="userPassword" name="userPassword"/><span id="userPasswordSpan"></span></dd>
 			</dl>
 			<div class="buttons">
+				${error }
 				<input type="button"   value="登录系统" class="input-button" onclick="validate();" />
 				<input type="reset"  value="重　　填" class="input-button" />
 			</div>
