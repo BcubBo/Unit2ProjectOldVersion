@@ -17,16 +17,28 @@ public class User {
 	//用户密码
 	//电话
 	//地址
-
+	//经验教训：setter和gettter一定要和字段名称一致
 	private  Date bornDate,creationDate,modifyDate;
 	//出生日期
 	//创建时间
 	//更新时间
-
+	private int age;
 
 	
 
 
+	public int getAge() {
+		/*long time = System.currentTimeMillis()-bornDate.getTime();
+		int age = Long.valueOf(time/365/24/60/60/1000).intValue();
+		方法1
+		*/
+		//方法二
+		Date currentDate = new Date();
+		int currentYear = currentDate.getYear();
+		int bornYear = bornDate.getYear();
+		this.age = currentYear - bornYear;
+		return this.age ;
+	}
 	public int getId() {
 		return id;
 	}
@@ -57,10 +69,10 @@ public class User {
 	public void setGender(int gender) {
 		this.gender = gender;
 	}
-	public Date getDate() {
+	public Date getBornDate() {
 		return bornDate;
 	}
-	public void setDate(Date bornDate) {
+	public void setBornDate(Date bornDate) {
 		this.bornDate = bornDate;
 	}
 	public String getPhone() {

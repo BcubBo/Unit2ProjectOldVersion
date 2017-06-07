@@ -21,7 +21,7 @@
 			<tbody>
 				<tr>
 					<td><form method="post" action="user.do">
-							<input name="method" value="query" class="input-text" type="hidden"> 用户名：<input name="queryname" class="input-text" type="text" value="">&nbsp;&nbsp;&nbsp;&nbsp;
+							<input name="method" value="query" class="input-text" type="hidden"> 用户名：<input name="queryname" class="input-text" type="text" value="${queryUserName }">&nbsp;&nbsp;&nbsp;&nbsp;
 							<input value="查 询" type="submit">
 						</form>
 					</td>
@@ -61,6 +61,11 @@
 						<tr>
 							<td>
 								<span>
+									${user.id}
+								</span>
+							</td>
+							<td>
+								<span>
 									${user.userCode }
 								</span>
 							</td>
@@ -77,7 +82,7 @@
 							</td>
 							<td>
 								<span>
-									${user.bornDate }
+									${user.age }
 								</span>							
 							
 							</td>
@@ -94,6 +99,7 @@
 									
 								</span>
 							</td>
+							
 							<td>
 								<span>查看</span>
 								<span>修改</span>
@@ -112,7 +118,7 @@
 					<tr>
 						<td height="23"><span class="STYLE1">-1</span>
 						</td>
-						<td><span class="STYLE1"> 管理员 </span>
+						<td><span class="STYLE1"> 管理员(html硬编码位置) </span>
 						</td>
 						<td><span class="STYLE1"><a href="user.do?method=getInfo&amp;userId=-1"> admin</a>
 						</span>

@@ -59,7 +59,7 @@ public class UserDaoImpl implements UserDao{
 				user.setUserPassword(resultSets.getString("userPassword"));
 				user.setPhone(resultSets.getString("phone"));
 				user.setAddress(resultSets.getString("address"));
-				user.setDate(resultSets.getTimestamp("bornDate"));
+				user.setBornDate(resultSets.getTimestamp("bornDate"));
 				user.setCreationDate(resultSets.getTimestamp("creationDate"));
 				user.setModifyDate(resultSets.getTimestamp("modifyDate"));
 				
@@ -89,7 +89,7 @@ public class UserDaoImpl implements UserDao{
 		List<User> userList = new ArrayList<User>();
 		if(connection != null){
 			
-			String sql = "select * from smbms_user where userName like ?";
+			String sql = "select * from smbms_user where userCode like ?";
 			Object[] params = {"%"+userName+"%"};
 			resultSets = BaseDao.executeSql(connection, preparedStatement, resultSets, sql, params);
 			while(resultSets.next()){
@@ -100,7 +100,7 @@ public class UserDaoImpl implements UserDao{
 				_user.setUserName(resultSets.getString("userName"));
 				_user.setGender(resultSets.getInt("gender"));
 				_user.setPhone(resultSets.getString("phone"));
-				_user.setDate(resultSets.getDate("bornDate"));
+				_user.setBornDate(resultSets.getDate("bornDate"));
 				_user.setUserType(resultSets.getInt("userType"));
 				
 				userList.add(_user);
