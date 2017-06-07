@@ -15,9 +15,36 @@ public class UserDaoImpl implements UserDao{
 		int updateRows=0;
 		if(null!=connection){
 			PreparedStatement preparedStatement=null;
-			String sql = "insert into smbms_user(userCode,userName) values(?,?)";
+			String sql = "insert into smbms_user("
+					+ "userCode,"
+					+ "userName,"
+					+ "userPassword,"
+					+ "userType,"
+					+ "gender,"
+					+ "phone,"
+					+ "address,"
+					+ "creationDate,"
+					+ "createBy,"
+					+ "bornDate) "
+					+ "values(?,?,?,?,?,?,?,?,?,?)";
 			
-			Object [] params = {user.getUserCode(),user.getUserName()};
+			Object [] params = {user.getUserCode(),
+								user.getUserName(),
+								user.getUserPassword(),
+								user.getUserType(),
+								user.getGender(),
+								user.getPhone(),
+								user.getAddress(),
+								user.getCreationDate(),
+								user.getCreateBy(),
+								user.getBornDate()
+					
+			
+			
+			
+			
+			
+			};
 			
 			updateRows = BaseDao.executeSql(connection, preparedStatement, sql, params);
 			BaseDao.closeResource(null, preparedStatement, null);

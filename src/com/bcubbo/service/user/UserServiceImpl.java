@@ -49,8 +49,9 @@ public class UserServiceImpl implements UserService {
 			connection.setAutoCommit(false);
 			
 			
-			user.setUserCode("userCode2");
-			user.setUserName("用户2");
+			/*user.setUserCode("userCode2");
+			user.setUserName("用户2");*/
+			//测试用案例
 			
 			updateRows = userDao.add(connection,user);
 
@@ -161,6 +162,28 @@ public class UserServiceImpl implements UserService {
 		};
 		
 		return userList;
+	}
+	public User selectUserCodeExist(String userCode) {
+		
+		User user = null;
+		Connection connection = null;
+		
+		try{
+			
+			connection = BaseDao.getConnection();
+			user = userDao.getLoginUser(connection, userCode);
+			System.out.println("selectUserCodeExist中的user对象的值为>>>>>>>"+user);
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+			
+		}finally{
+			BaseDao.closeResource(connection, null, null);
+			
+		};
+		
+		return user;
 	}
 
 }

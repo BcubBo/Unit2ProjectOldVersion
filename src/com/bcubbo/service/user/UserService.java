@@ -30,5 +30,16 @@ public interface UserService {
 	 * 
 	 */
 	public List<User> getUserList(String queryUserName);
-
+	
+	
+	/**
+	 *查询是否存在userCode
+	 *@param userCode
+	 *@return 
+	 * 
+	 * 
+	 * 
+	 */
+	
+	public User selectUserCodeExist(String userCode);
 }

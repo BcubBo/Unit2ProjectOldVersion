@@ -1,6 +1,11 @@
 package com.bcubbo.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -8,9 +13,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSONArray;
 import com.bcubbo.pojo.User;
 import com.bcubbo.service.user.UserService;
 import com.bcubbo.service.user.UserServiceImpl;
+import com.bcubbo.tools.Constants;
+import com.mysql.jdbc.StringUtils;
 
 
 
@@ -30,7 +38,36 @@ public class UserServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String method = request.getParameter("method");
+		
+		System.out.println("method>>>>>>>>"+method);
+		if(method != null && method.equals("add")){
+			
+			//增加操作
+			System.out.println(">>>>>>>>>增加方法块中add()||user.do中<<<<<<<<<if语句中");
+			this.add(request, response);
+			
+			
+		}else if(method != null && method.equals("query")){
+			
+			this.query(request,response);
+			//本地私有query方法
+			
+			
+		}else if(method!=null && method.equals("ucexist")){
+			
+			this.userCodeExist(request,response);
+			
+		}
+		
+		
+		
+		
+	}
+	private void query(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
 		//查询用户列表
+		
+		
 		String queryUserName = request.getParameter("queryname");
 		/**
 		 * 
@@ -48,8 +85,110 @@ public class UserServlet extends HttpServlet {
 		request.setAttribute("userList",userList);
 		request.setAttribute("queryUserName", queryUserName);
 		request.getRequestDispatcher("html/userList.jsp").forward(request, response);
-		
-		
-	}
+	};
 
+	
+	private void add(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+		
+		//增加操作
+		System.out.println(">>>>>>>>>增加方法块中add()||user.do中<<<<<<<<<add()方法块语句中");
+		
+		String userCode = request.getParameter("userCode");
+		String userName = request.getParameter("userName");		
+		String userPassword = request.getParameter("userPassword");		
+		int gender = Integer.parseInt(request.getParameter("gender"));
+		String bornDate = request.getParameter("bornDate");		
+		String phone = request.getParameter("phone");		
+		String address = request.getParameter("address");		
+		String userType = request.getParameter("userType");	
+		
+		User user = new User();
+		user.setUserCode(userCode);
+		user.setUserName(userName);
+		user.setUserPassword(userPassword);
+		user.setGender(gender);
+		user.setPhone(phone);
+		try {
+			user.setBornDate(new SimpleDateFormat("yyyy-MM-dd").parse(bornDate));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		user.setAddress(address);
+		user.setUserType(Integer.valueOf(userType));
+		user.setCreationDate(new Date());
+		user.setCreateBy(((User)request.getSession().getAttribute(Constants.USER_SESSION)).getId());
+		//强制类型转换
+		UserService userService = new UserServiceImpl();
+		if(userService.add(user)){
+			
+			request.getRequestDispatcher("/user.do?method=query").forward(request,response);
+			//请求一次，因为新增了信息
+			
+			
+		}else{
+			
+			request.getRequestDispatcher("html/userAdd.jsp").forward(request, response);
+			
+			
+		}
+		
+		
+
+	};
+	
+	private void userCodeExist(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+		
+		//判断用户账号是否可用
+		String userCode = request.getParameter("userCode");
+		
+		HashMap<String,String> resultMap = new HashMap<String,String>();
+		//HashMap存储json数据
+		if(StringUtils.isNullOrEmpty(userCode)){
+			
+			//UserCode == null || userCode.equals("")
+			resultMap.put("userCode", "exist");
+	
+		}else{
+			
+			UserService userService  = new UserServiceImpl();
+			
+			User user = userService.selectUserCodeExist(userCode);
+			
+			if(null != user){
+				//不等空时
+				resultMap.put("userCode", "exist");
+				
+			}else{
+				//等空时
+				
+				resultMap.put("userCode", "notexist");
+			}
+			
+			
+		};
+		/**
+		 * 
+		 *把resultMap转为json字符串以json的形式输出 
+		 * 
+		 * 
+		 * 
+		 * 
+		 */
+		response.setContentType("application/json");//配置上下文的输出类型
+		//从response对象中获取往外输出的write对象
+		PrintWriter outPrintWriter = response.getWriter();
+		//把resultMap转为json字符串输出
+		outPrintWriter.write(JSONArray.toJSONString(resultMap));
+		
+		outPrintWriter.flush();
+		
+		outPrintWriter.close();
+		
+	};
+	
+	
+	
+	
+	
+	
 }

@@ -20,7 +20,7 @@
 		<table>
 			<tbody>
 				<tr>
-					<td><form method="post" action="user.do">
+					<td><form method="post" action="${pageContext.request.contextPath}/user.do">
 							<input name="method" value="query" class="input-text" type="hidden"> 用户名：<input name="queryname" class="input-text" type="text" value="${queryUserName }">&nbsp;&nbsp;&nbsp;&nbsp;
 							<input value="查 询" type="submit">
 						</form>
@@ -77,7 +77,7 @@
 							<td>
 							<span>
 									<c:if test="${user.gender==1 }">男</c:if>
-									<c:if test="${user.gender==1 }">女</c:if>
+									<c:if test="${user.gender==2 }">女</c:if>
 							</span>
 							</td>
 							<td>
