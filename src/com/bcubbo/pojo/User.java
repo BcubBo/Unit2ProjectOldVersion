@@ -27,17 +27,26 @@ public class User {
 	
 
 
-	public int getAge() {
+	public String getAge() {
 		/*long time = System.currentTimeMillis()-bornDate.getTime();
 		int age = Long.valueOf(time/365/24/60/60/1000).intValue();
 		方法1
 		*/
 		//方法二
+		int age = 0;
 		Date currentDate = new Date();
-		int currentYear = currentDate.getYear();
-		int bornYear = bornDate.getYear();
-		this.age = currentYear - bornYear;
-		return this.age ;
+		if(bornDate!=null){
+			 age = (currentDate.getYear())-(bornDate.getYear());
+			 String ageString = Integer.toString(age);
+			 return  ageString;
+		}else{
+			return "null";
+			
+			
+		}
+		
+		
+		
 	}
 	public int getId() {
 		return id;

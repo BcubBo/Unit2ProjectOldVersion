@@ -27,6 +27,7 @@ public class LogoutServlet extends HttpServlet {
 		
 		
 		request.getSession().removeAttribute(Constants.USER_SESSION);
+		response.sendRedirect("login.jsp");
 		//使会话失效，实现注销
 	}
 

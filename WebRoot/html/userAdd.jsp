@@ -1,8 +1,14 @@
-﻿<html><head>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<html>
+
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
-<link type="text/css" rel="stylesheet" href="../css/style.css"/>
-<script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
+<link type="text/css" rel="stylesheet" href="${pageContex.request.contextPath}/css/style.css"/>
+
 </head>
 <body>
 <div class="main">
@@ -39,7 +45,7 @@
 				</tr>
 				<tr>
 					<td class="field">出生日期：</td>
-					<td><input type="text" name="birthDate" class="text" id="birthDate" value=""> <font color="red">*</font><font color="red" id="birthDate_span"></font></td>
+					<td><input type="text" name="bornDate" class="Wdate" id="bornDate" value="" readonly="readonly" onclick="WdatePicker();"> <font color="red">*</font><font color="red" id="birthDate_span"></font></td>
 				</tr>
 				<tr>
 					<td class="field">用户电话：</td>
@@ -65,7 +71,8 @@
 
 	</form>
 </div>
-<script type="text/javascript" src="../js/user/add.js"></script>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/user/add.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.2.1.js"></script>
+<script src="${pageContext.request.contextPath}/calendar/WdatePicker.js" type="text/javascript"></script>
 
 </body></html>
