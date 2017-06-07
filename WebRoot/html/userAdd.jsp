@@ -20,7 +20,7 @@
 		<div class="title">用户管理&gt;&gt;</div>
 
 	</div>
-	<form id="form1" name="form1" method="post" action="${pageContext.request.contextPath}/user.do">
+	<form id="userForm" name="userForm" method="post" action="${pageContext.request.contextPath}/user.do">
 		<input type="hidden" name="method" value="add">
 		<div class="content">
 			<table class="box">
@@ -69,7 +69,7 @@
 			</tbody></table>
 		</div>
 		<div class="buttons">
-			<input type="submit" name="add" id="add" value="保存" class="input-button">
+			<input type="button" name="add" id="add" value="保存" class="input-button">
 			<input type="button" name="button" id="button" onclick="history.back(-1)" value="返回" class="input-button"> 
 		</div>
 
@@ -87,7 +87,9 @@
 </body>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/common.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/user/add.js" ></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/user/add.js" >
+
+</script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/calendar/WdatePicker.js" ></script>
 </html>
 
