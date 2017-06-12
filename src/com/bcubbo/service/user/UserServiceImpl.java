@@ -185,5 +185,30 @@ public class UserServiceImpl implements UserService {
 		
 		return user;
 	}
+	public boolean deleteUser(int delId) {
+		Connection connection = null;
+		boolean deleteResult = false;
+
+		try{
+			
+			connection = BaseDao.getConnection();
+			if(userDao.deleteUserList(connection, delId)>0){
+				
+				deleteResult = true;
+				
+				
+				
+			};
+		}catch(Exception e){
+			
+			e.printStackTrace();
+			
+		}finally{
+			BaseDao.closeResource(connection, null, null);
+			
+		};
+		
+		return deleteResult;
+	}
 
 }

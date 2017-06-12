@@ -143,4 +143,35 @@ public class UserDaoImpl implements UserDao{
 		return userList;
 	}
 
+	
+	public int deleteUserList(Connection connection ,int delId) {
+		
+		int deleteRows = 0;
+		
+		PreparedStatement preparedStatement = null;
+		
+		if(connection!=null){
+			
+			String sql = "delete from smbms_user where id=?";
+			Object[] params ={delId};
+			try {
+				deleteRows = BaseDao.executeSql(connection, preparedStatement,sql, params);
+			} catch (Exception e) {
+				
+				
+				
+				e.printStackTrace();
+			}
+			
+			
+			
+		}
+		
+		
+		return deleteRows ;
+		
+		
+		
+	}
+
 }

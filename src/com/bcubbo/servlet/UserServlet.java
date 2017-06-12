@@ -58,12 +58,27 @@ public class UserServlet extends HttpServlet {
 			
 			this.userCodeExist(request,response);
 			
+		}else if(method!=null && method.equals(("deleteUser"))){
+			
+			this.deleteUser(request,response);
+			
+			
+			
+		}else if(method!=null && method.equals("view")){
+			
+			this.getUserById(request, response,"jsp/userview.jsp");
+
+		}else if(method!=null && method.equals("modify")){
+			
+			this.getUserById(request,response,"jsp/usermodify.jsp");
 		}
 		
 		
 		
 		
-	}
+	}//进行判断
+	
+	
 	private void query(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
 		//查询用户列表
 		
@@ -186,9 +201,76 @@ public class UserServlet extends HttpServlet {
 		
 	};
 	
+private void deleteUser(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+		
+		String id = request.getParameter("uid");
+		Integer delId = 0;
+		
+		try{
+			
+			delId  = Integer.parseInt(id);
+			
+			
+		}catch(Exception e){
+			
+			delId = 0;
+			
+			//e.printStackTrace();
+		}
+		HashMap<String,String> resultMap = new HashMap<String,String>();
+		if(delId<=0){
+			
+			resultMap.put("delResult", "notexist");
+			
+			
+		}else{
+			
+			UserService userService = new UserServiceImpl();
+			if(userService.deleteUser(delId)){
+				
+				resultMap.put("deleteResult", "true");
+				
+				
+			}else{
+				
+				resultMap.put("deleteResult","false");
+				
+			}
+			
+			
+		}
+		
+		//把resultMap转换成json对象输出
+		response.setContentType("application/json");
+		PrintWriter outPrintWriter = response.getWriter();
+		outPrintWriter.write(JSONArray.toJSONString(resultMap));
+		outPrintWriter.flush();
+		outPrintWriter.close();
+		resultMap.clear();
+		
+		
+	}
 	
-	
-	
+	private void getUserById(HttpServletRequest request, HttpServletResponse response,String url)throws ServletException, IOException{
+		
+		//根据id获取信息
+		String id =request.getParameter("uid");
+		if(!StringUtils.isNullOrEmpty(id)){
+			
+			//调用后台方法得到user对象
+			UserService userService =  new UserServiceImpl();
+			
+			 List<User> user  = userService.getUserList(id);
+			 
+			 request.setAttribute("user",user);
+			 //此为list
+			 request.getRequestDispatcher(url).forward(request,response);
+			
+			
+		}
+		
+		
+	}
 	
 	
 }

@@ -21,6 +21,7 @@
 			<tbody>
 				<tr>
 					<td><form method="post" action="${pageContext.request.contextPath}/user.do">
+					<input name="path" type="hidden" value="${pageContext.request.contextPath }" id="path"/>	
 							<input name="method" value="query" class="input-text" type="hidden"> 用户名：<input name="queryname" class="input-text" type="text" value="${queryUserName }">&nbsp;&nbsp;&nbsp;&nbsp;
 							<input value="查 询" type="submit">
 						</form>
@@ -101,9 +102,9 @@
 							</td>
 							
 							<td>
-								<span>查看</span>
-								<span>修改</span>
-								<span>删除</span>
+								<span><a class="viewUser" href="javascript:;" userId=${user.id } username = ${user.userName }>查看</a></span>
+								<span><a class="modifyUser" href="javascript:;" userId=${user.id } username = ${user.userName }>修改</a></span>
+								<span><a class="deleteUser" href="javascript:;" userId=${user.id } username= ${user.userName }>删除</a></span>
 							</td>
 
 						
@@ -156,4 +157,15 @@
 		</div>
 	</div>
 
-</body></html>
+</body>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/common.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/user/add.js" >
+</script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/user/userList.js"></script>
+
+
+
+
+
+</html>

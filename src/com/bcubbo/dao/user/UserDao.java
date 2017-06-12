@@ -60,7 +60,7 @@ public interface UserDao {
 	 */
 	public List<User> getUserList(Connection connection,String userName)throws Exception;
 	
-	
+	public int deleteUserList(Connection connection ,int userId)throws Exception;
 	
 	
 	

@@ -4,7 +4,7 @@ public class Singleton {
 
 	//private static Singleton singleton;
 	
-	/*tatic{
+	/*static{
 		
 		System.out.println("static静态代码块");
 		singleton = new Singleton();
