@@ -31,7 +31,7 @@ $(function() {
      *失焦\获取焦点
      *jquery的方法传递
      */
-    userCode.bind("blur", function() {
+    userCode.on("blur", function() {
         //ajax后台验证--userCode是否已存在
         //user.do?userCode=**&method=exists
         $.ajax({
@@ -58,7 +58,7 @@ $(function() {
         //此账户可用
         //不可用
 
-    }).bind("focus", function() {
+    }).on("focus", function() {
         //显示友情提示
         validateTip(userCode.next(), { "color": "#666666" }, "* 此项为你登陆系统的账号", false);
 
@@ -69,11 +69,11 @@ $(function() {
     userCode.focus();
     //////
 
-    userName.bind("focus", function() {
+    userName.on("focus", function() {
 
             validateTip(userName.next(), { "color": "#666666" }, "* 用户名必须是大于3小于10的字符", false);
 
-        }).bind("blur", function() {
+        }).on("blur", function() {
 
             if (userName.val() != null && userName.val().length > 3 && userName.val().length < 10) {
 
@@ -86,11 +86,11 @@ $(function() {
 
         })
         /////
-    userPassword.bind("focus", function() {
+    userPassword.on("focus", function() {
 
         validateTip(userPassword.next(), { "color": "#666666" }, "* 密码长度必须是大于6小于20", false);
 
-    }).bind("blur", function() {
+    }).on("blur", function() {
 
         if (userPassword.val() != null && userPassword.val().length > 6 && userPassword.val().length < 20) {
 
@@ -107,11 +107,11 @@ $(function() {
     });
     //////
 
-    ruserPassword.bind("focus", function() {
+    ruserPassword.on("focus", function() {
 
         validateTip(ruserPassword.next(), { "color": "#666666" }, "* 请输入与上边一致的密码", false);
 
-    }).bind("blur", function() {
+    }).on("blur", function() {
 
         if (ruserPassword.val() != null && ruserPassword.val().length > 6 && ruserPassword.val().length < 20 && ruserPassword.val() == ruserPassword.val()) {
 
@@ -129,10 +129,10 @@ $(function() {
     //////
 
 
-    bornDate.bind("focus", function() {
+    bornDate.on("focus", function() {
         validateTip(bornDate.next(), { "color": "#666666" }, "* 点击输入框选择日期", false);
 
-    }).bind("blur",function() {
+    }).on("blur",function() {
         if (bornDate.val() != null && bornDate.val() != "") {
             validateTip(bornDate.next(), { "color": "yellowgreen" }, imgYes, true);
 
@@ -151,12 +151,12 @@ $(function() {
 
 
 
-    phone.bind("focus", function() {
+    phone.on("focus", function() {
 
         validateTip(phone.next(), { "color": "#666666" }, "* 请输入手机号", false);
 
 
-    }).bind("blur", function() {
+    }).on("blur", function() {
 
         var pattern = /^(13[0-9]{1}|15[0-9]{1}|18[0-9]{1})\d{8}$/;
         if (phone.val().match(pattern)) {
@@ -172,7 +172,7 @@ $(function() {
 
 
 
-    addBtn.bind("click", function() {
+    addBtn.on("click", function() {
 
         if (userCode.attr("validateStatus") != "true" ) {
         	

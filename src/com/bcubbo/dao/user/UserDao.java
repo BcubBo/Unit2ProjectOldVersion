@@ -13,12 +13,6 @@ public interface UserDao {
 	 * @return
 	 * @throws Exception
 	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
 	 */
 	public int add(Connection connection,User user) throws Exception;
 	
@@ -31,14 +25,6 @@ public interface UserDao {
 	 * @param userCode
 	 * @return 
 	 * @throws Exception
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
 	 */
 	public User getLoginUser(Connection connection,String userCode)throws Exception;
 	
@@ -48,23 +34,33 @@ public interface UserDao {
 	 * @param connection
 	 * @param userName
 	 * @return
-	 * @throws Exception
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
+	 * @throws Exception 
 	 */
 	public List<User> getUserList(Connection connection,String userName)throws Exception;
-	
+	/**
+	 * 删除用户列表
+	 * @param connection
+	 * @param userId
+	 * @return
+	 * @throws Exception 
+	 */
 	public int deleteUserList(Connection connection ,int userId)throws Exception;
-	
-	
-	
-	
+	/**
+	 * 通过id获取用户
+	 * @param connection
+	 * @param userName
+	 * @return User
+	 * @throws Exception 
+	 */
+	public User getUserById(Connection connection ,String userName)throws Exception;
+	/**
+	 * 进行修改
+	 * @param connection
+	 * @param id
+	 * @return boolean
+	 * @throws Exception 
+	 */
+	public boolean modify(Connection connection ,User user)throws Exception;
 	
 	
 	

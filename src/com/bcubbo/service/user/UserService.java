@@ -53,7 +53,21 @@ public interface UserService {
 	 */
 	
 	public boolean deleteUser(int delId);
-	
-	
-	
+	/**
+	 * 
+	 *获取单用户
+	 * @param id
+	 * @return User
+	 * 
+	 * 
+	 */
+	public User getUserById(String id);
+
+	/**
+	 *修改用户
+	 *@param user
+	 *@return 
+	 * 
+	 */
+	public boolean modify(User user);
 }

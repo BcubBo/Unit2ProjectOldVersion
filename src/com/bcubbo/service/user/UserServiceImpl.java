@@ -125,7 +125,7 @@ public class UserServiceImpl implements UserService {
 			
 		};
 		if(null != user){
-			if(!user.getUserPassword().equals(userPassword)){
+			if(!user.getUserPassword().equals(userPassword)&& user.getUserPassword()!=null){
 				
 				user = null;
 				
@@ -210,5 +210,48 @@ public class UserServiceImpl implements UserService {
 		
 		return deleteResult;
 	}
+	public User getUserById(String id){
+		
+		User user = null;
+		Connection connection = null;
+		boolean deleteResult = false;
 
+		try{
+			
+			
+			connection = BaseDao.getConnection();
+			user = userDao.getUserById(connection,id);
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+			
+		}finally{
+			BaseDao.closeResource(connection, null, null);
+			
+		};
+		
+	
+
+	
+		
+		
+		
+		return user;
+		
+		
+		
+		
+	}
+	public boolean modify(User user) {
+		Connection connection = null;
+		boolean flag = false;
+		try {
+			connection = BaseDao.getConnection();
+			flag = userDao.modify(connection, user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return flag;
+	}
 }

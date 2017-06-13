@@ -142,6 +142,7 @@ public class UserDaoImpl implements UserDao{
 		
 		return userList;
 	}
+	
 
 	
 	public int deleteUserList(Connection connection ,int delId) {
@@ -173,5 +174,87 @@ public class UserDaoImpl implements UserDao{
 		
 		
 	}
+	
+	
+	
+	public User getUserById(Connection connection, String id) throws Exception {
+			
+			PreparedStatement preparedStatement = null;
+			ResultSet resultSets = null;
+			User user = new User();
+			if(connection != null){
+				
+				String sql = "select * from smbms_user where id = ?";
+				Object[] params = {id};
+				resultSets = BaseDao.executeSql(connection, preparedStatement, resultSets, sql, params);
+				while(resultSets.next()){
+					
+					
+					user.setId(resultSets.getInt("id"));
+					user.setUserCode(resultSets.getString("userCode"));
+					user.setUserName(resultSets.getString("userName"));
+					user.setGender(resultSets.getInt("gender"));
+					user.setPhone(resultSets.getString("phone"));
+					user.setBornDate(resultSets.getDate("bornDate"));
+					user.setUserType(resultSets.getInt("userType"));
+					
+					
+					
+					
+					
+				}
+				
+				BaseDao.closeResource(null, preparedStatement, resultSets);
+				
+			};
+			
+			return user;
+		}
 
+	public boolean modify(Connection connection, User user) throws Exception {
+		boolean flag = false;
+		PreparedStatement preparedStatement = null;
+
+		User tempUser = user;
+		if(connection != null){
+			
+			String sql = "update smbms_user set	userCode = (?),userName = (?),phone= (?),gender = (?),bornDate= (?), address = (?),userType = (?) ,modifyBy =(?),modifyDate = (?) where id = ?; ";
+			
+			Object[] params = {
+					tempUser.getUserCode(),
+					tempUser.getUserName(),
+					tempUser.getPhone(),
+					tempUser.getGender(),
+					tempUser.getBornDate(),
+					tempUser.getAddress(),
+					tempUser.getUserType(),
+					tempUser.getModifyBy(),
+					tempUser.getModifyDate(),
+					tempUser.getId()
+					};
+		if(BaseDao.executeSql(connection, preparedStatement, sql, params)>0){
+			
+				flag =true;
+			
+			System.out.println("UserDaoImpl中flag为"+flag);
+			
+			
+		};	
+			
+			
+			BaseDao.closeResource(null, preparedStatement, null);
+			
+		};
+		
+		
+	
+		
+		
+		
+		
+		
+		
+		return flag;
+	}
+	
 }

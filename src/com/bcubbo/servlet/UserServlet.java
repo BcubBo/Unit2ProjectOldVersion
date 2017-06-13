@@ -66,11 +66,17 @@ public class UserServlet extends HttpServlet {
 			
 		}else if(method!=null && method.equals("view")){
 			
-			this.getUserById(request, response,"jsp/userview.jsp");
+			this.getUserById(request, response,"html/userView.jsp");
 
 		}else if(method!=null && method.equals("modify")){
 			
-			this.getUserById(request,response,"jsp/usermodify.jsp");
+			this.getUserById(request,response,"html/userModify.jsp");
+		}else if(method!=null && method.equals("modifyexe")){
+			
+			this.modify(request,response);
+			
+			
+			
 		}
 		
 		
@@ -256,11 +262,11 @@ private void deleteUser(HttpServletRequest request, HttpServletResponse response
 		//根据id获取信息
 		String id =request.getParameter("uid");
 		if(!StringUtils.isNullOrEmpty(id)){
-			
+			//StringUtils.isNullOrEmpty(id)
 			//调用后台方法得到user对象
 			UserService userService =  new UserServiceImpl();
 			
-			 List<User> user  = userService.getUserList(id);
+			 User user  = userService.getUserById(id);
 			 
 			 request.setAttribute("user",user);
 			 //此为list
@@ -271,6 +277,70 @@ private void deleteUser(HttpServletRequest request, HttpServletResponse response
 		
 		
 	}
-	
+	private void modify(HttpServletRequest request, HttpServletResponse response){
+		
+		String id = request.getParameter("uid");
+		String userName = request.getParameter("userName");
+		String gender = request.getParameter("gender");
+		String bornDate = request.getParameter("bornDate");
+		String phone = request.getParameter("phone");
+		String address = request.getParameter("address");
+		String userType = request.getParameter("userType");
+		
+		User user = new User();
+		user.setId(Integer.parseInt(id));
+		user.setUserName(userName);
+		user.setGender(Integer.valueOf(gender));
+		
+		try {
+			user.setBornDate(new SimpleDateFormat("yyyy-MM-dd").parse(bornDate));
+			//设置日期
+			
+			
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		user.setUserType(Integer.parseInt(userType));
+		
+		user.setModifyBy(((User)request.getSession().getAttribute(Constants.USER_SESSION)).getId());
+		/////
+		user.setModifyDate(new Date());
+		user.setPhone(phone);
+		user.setAddress(address);
+		request.setAttribute("user", user);
+		//设置user对象到request中
+		UserService userService = new UserServiceImpl();
+		try{
+			if(userService.modify(user)){
+				
+				request.getRequestDispatcher("/user.do?method=query").forward(request,response);
+				
+				
+				
+			}else{
+				
+				request.getRequestDispatcher("html/userModify.jsp").forward(request,response);
+				
+				
+				
+				
+			}
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}////;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
 	
 }
