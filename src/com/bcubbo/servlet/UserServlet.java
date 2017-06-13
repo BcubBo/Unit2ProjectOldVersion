@@ -286,9 +286,11 @@ private void deleteUser(HttpServletRequest request, HttpServletResponse response
 		String phone = request.getParameter("phone");
 		String address = request.getParameter("address");
 		String userType = request.getParameter("userType");
+		String userCode = request.getParameter("userCode");
 		
 		User user = new User();
 		user.setId(Integer.parseInt(id));
+		user.setUserCode(userCode);
 		user.setUserName(userName);
 		user.setGender(Integer.valueOf(gender));
 		
