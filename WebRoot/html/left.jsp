@@ -28,7 +28,7 @@
 				src="${pageContext.request.contextPath}/images/btn_users.gif" />
 		</a>
 		</li>	
-		<li><a href="updatePwd.jsp" target="mainFrame"><img
+		<li><a href="pwdmodify.jsp" target="mainFrame"><img
 				src="${pageContext.request.contextPath}/images/btn_password.gif" />
 		</a>
 		</li>

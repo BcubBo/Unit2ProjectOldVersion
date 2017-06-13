@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 
@@ -10,6 +10,9 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.2.1.js"></script>
 </head>
 <body>
+<form id="passwordSubmit" action="${pageContext.request.contextPath }/user.do" method="post">
+<input type="hidden" name="path" id="path" value="${pageContext.request.contextPath }"/>
+<input type="hidden" name="method" value="savepwd"/>
 	<div class="main">
 		<div class="optitle clearfix">
 			<div class="title">密码修改&gt;&gt;</div>
@@ -33,9 +36,11 @@
 				</table>
 			</div>
 			<div class="buttons">
-				<input type="button" id="update" value="修改" class="input-button" />
+				<input type="button" id="save" value="修改" class="input-button" />
 			</div>
 	</div>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/js/user/updatePwd.js"></script>
+	</form>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/js/user/pwdmodify.js"></script>
 </body>
 </html>

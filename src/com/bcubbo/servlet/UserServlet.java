@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -74,6 +75,21 @@ public class UserServlet extends HttpServlet {
 		}else if(method!=null && method.equals("modifyexe")){
 			
 			this.modify(request,response);
+			
+			
+			
+		}else if(method!=null && method.equals("pwdmodify")){
+			
+			//修改密码
+			
+			this.getPwdByUserId(request,response);
+			//通过id获取密码
+			
+			
+			
+		}else if(method!=null && method.equals("savepwd")){
+			
+			this.updatePwd();
 			
 			
 			
@@ -207,55 +223,55 @@ public class UserServlet extends HttpServlet {
 		
 	};
 	
-private void deleteUser(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-		
-		String id = request.getParameter("uid");
-		Integer delId = 0;
-		
-		try{
+	private void deleteUser(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
 			
-			delId  = Integer.parseInt(id);
+			String id = request.getParameter("uid");
+			Integer delId = 0;
 			
-			
-		}catch(Exception e){
-			
-			delId = 0;
-			
-			//e.printStackTrace();
-		}
-		HashMap<String,String> resultMap = new HashMap<String,String>();
-		if(delId<=0){
-			
-			resultMap.put("delResult", "notexist");
-			
-			
-		}else{
-			
-			UserService userService = new UserServiceImpl();
-			if(userService.deleteUser(delId)){
+			try{
 				
-				resultMap.put("deleteResult", "true");
+				delId  = Integer.parseInt(id);
+				
+				
+			}catch(Exception e){
+				
+				delId = 0;
+				
+				//e.printStackTrace();
+			}
+			HashMap<String,String> resultMap = new HashMap<String,String>();
+			if(delId<=0){
+				
+				resultMap.put("delResult", "notexist");
 				
 				
 			}else{
 				
-				resultMap.put("deleteResult","false");
+				UserService userService = new UserServiceImpl();
+				if(userService.deleteUser(delId)){
+					
+					resultMap.put("deleteResult", "true");
+					
+					
+				}else{
+					
+					resultMap.put("deleteResult","false");
+					
+				}
+				
 				
 			}
 			
+			//把resultMap转换成json对象输出
+			response.setContentType("application/json");
+			PrintWriter outPrintWriter = response.getWriter();
+			outPrintWriter.write(JSONArray.toJSONString(resultMap));
+			outPrintWriter.flush();
+			outPrintWriter.close();
+			resultMap.clear();
+			
 			
 		}
-		
-		//把resultMap转换成json对象输出
-		response.setContentType("application/json");
-		PrintWriter outPrintWriter = response.getWriter();
-		outPrintWriter.write(JSONArray.toJSONString(resultMap));
-		outPrintWriter.flush();
-		outPrintWriter.close();
-		resultMap.clear();
-		
-		
-	}
 	
 	private void getUserById(HttpServletRequest request, HttpServletResponse response,String url)throws ServletException, IOException{
 		
@@ -344,5 +360,55 @@ private void deleteUser(HttpServletRequest request, HttpServletResponse response
 		
 		
 	}
-	
+	private void getPwdByUserId(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+		
+		//通过用户id获取密码
+		Object o = request.getSession().getAttribute(Constants.USER_SESSION);
+		
+		String oldpassword  = request.getParameter("oldpassword");
+		Map<String,String> resultMap = new HashMap<String,String>();
+		
+		if(null != o && !StringUtils.isNullOrEmpty(oldpassword)){
+			
+			String sessionPwd = ((User)o).getUserPassword();
+			if(oldpassword.equals(sessionPwd)){
+				//验证旧密码和session对话中的密码是否一致
+				
+				resultMap.put("result", "true");
+				
+				
+				//将结果放入到HashMap中
+				
+				
+			}else{
+				
+				resultMap.put("result", "false");
+				
+				
+				
+				
+			};
+			//
+			
+			
+		}else{
+			
+			resultMap.put("result", "error");
+			
+			
+		}
+		response.setContentType("application/json");
+		PrintWriter outPrintWriter = response.getWriter();
+		outPrintWriter.write(JSONArray.toJSONString(resultMap));
+		outPrintWriter.flush();
+		outPrintWriter.close();
+		resultMap.clear();
+		//及西宁PrintWriter流的输出操作
+		
+		
+		
+		
+		
+		
+	};
 }
