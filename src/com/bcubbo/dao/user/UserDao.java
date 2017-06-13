@@ -6,6 +6,8 @@ import java.util.List;
 import com.bcubbo.pojo.User;
 
 public interface UserDao {
+	
+	public int add(Connection connection,User user) throws Exception;
 	/**
 	 * 增加用户信息
 	 * @param connection
@@ -14,9 +16,9 @@ public interface UserDao {
 	 * @throws Exception
 	 * 
 	 */
-	public int add(Connection connection,User user) throws Exception;
 	
-	
+
+	public User getLoginUser(Connection connection,String userCode)throws Exception;
 	/**
 	 * 
 	 * 
@@ -26,9 +28,9 @@ public interface UserDao {
 	 * @return 
 	 * @throws Exception
 	 */
-	public User getLoginUser(Connection connection,String userCode)throws Exception;
 	
-	
+
+	public List<User> getUserList(Connection connection,String userName)throws Exception;
 	/**
 	 * 通过userName模糊查询
 	 * @param connection
@@ -36,7 +38,9 @@ public interface UserDao {
 	 * @return
 	 * @throws Exception 
 	 */
-	public List<User> getUserList(Connection connection,String userName)throws Exception;
+	
+
+	public int deleteUserList(Connection connection ,int userId)throws Exception;
 	/**
 	 * 删除用户列表
 	 * @param connection
@@ -44,7 +48,9 @@ public interface UserDao {
 	 * @return
 	 * @throws Exception 
 	 */
-	public int deleteUserList(Connection connection ,int userId)throws Exception;
+	
+
+	public User getUserById(Connection connection ,String userName)throws Exception;
 	/**
 	 * 通过id获取用户
 	 * @param connection
@@ -52,7 +58,9 @@ public interface UserDao {
 	 * @return User
 	 * @throws Exception 
 	 */
-	public User getUserById(Connection connection ,String userName)throws Exception;
+	
+
+	public boolean modify(Connection connection ,User user)throws Exception;
 	/**
 	 * 进行修改
 	 * @param connection
@@ -60,8 +68,16 @@ public interface UserDao {
 	 * @return boolean
 	 * @throws Exception 
 	 */
-	public boolean modify(Connection connection ,User user)throws Exception;
-	
-	
+	public boolean updatePwd(Connection connection ,int id,String pwd)throws Exception;
+	/**
+	 * 修改密码
+	 * @param connection
+	 * @param id
+	 * @param pwd
+	 * @return boolean
+	 * 
+	 * 
+	 * 
+	 */
 	
 }

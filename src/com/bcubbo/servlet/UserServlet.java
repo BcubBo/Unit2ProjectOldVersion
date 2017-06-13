@@ -89,7 +89,7 @@ public class UserServlet extends HttpServlet {
 			
 		}else if(method!=null && method.equals("savepwd")){
 			
-			this.updatePwd();
+			this.updatePwd(request,response);
 			
 			
 			
@@ -411,4 +411,56 @@ public class UserServlet extends HttpServlet {
 		
 		
 	};
+
+	private void updatePwd(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+		
+		Object o = request.getSession().getAttribute(Constants.USER_SESSION);
+		String newpassword = request.getParameter("newpassword");
+		boolean flag = false;
+		
+		if(o!=null && !StringUtils.isNullOrEmpty(newpassword)){
+			
+			UserService userService = new UserServiceImpl();
+			flag = userService.updatePwd(((User)o).getId(),newpassword);
+			if(flag){
+				request.setAttribute(Constants.SYS_MESSAGE, "修改密码成功");
+				
+				
+			}else{
+				request.setAttribute(Constants.SYS_MESSAGE, "修改密码失败!");
+				
+			}
+			
+			
+			/////
+			
+		}else{
+			
+			
+			
+			request.setAttribute(Constants.SYS_MESSAGE, "修改密码成功");
+			
+			
+			
+			
+		};////
+		request.getRequestDispatcher("html/pwdmodify.jsp").forward(request, response);
+		
+		
+		
+		
+		
+		
+	}
+
+
+
+
+
+
+
+
 }
+
+
+

@@ -256,5 +256,32 @@ public class UserDaoImpl implements UserDao{
 		
 		return flag;
 	}
+
+	public boolean updatePwd(Connection connection, int id, String pwd) throws Exception {
+		
+		boolean flag = false;
+		
+		PreparedStatement preparedStatement = null;
+		
+		if(connection != null){
+			
+			String sql = "update smbms_user set userPassword = (?) where id = ?";
+			Object [] params = {id,pwd};
+			
+			if(BaseDao.executeSql(connection, preparedStatement, sql, params)>0){
+				
+				flag = true;
+				
+				
+			}
+			BaseDao.closeResource(null, preparedStatement, null);
+			
+		}
+		
+		
+		
+		
+		return flag;
+	}
 	
 }
