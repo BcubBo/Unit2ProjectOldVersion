@@ -415,12 +415,14 @@ public class UserServlet extends HttpServlet {
 	private void updatePwd(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
 		
 		Object o = request.getSession().getAttribute(Constants.USER_SESSION);
-		String newpassword = request.getParameter("newpassword");
+		System.out.println(((User)o).getId()+"<<<<<<<<<<对象o取出的id为");
+		String newpassword = request.getParameter("newPassword");
 		boolean flag = false;
 		
 		if(o!=null && !StringUtils.isNullOrEmpty(newpassword)){
 			
 			UserService userService = new UserServiceImpl();
+			System.out.println(((User)o).getId()+"<<<<<<<<<,获取的id");
 			flag = userService.updatePwd(((User)o).getId(),newpassword);
 			if(flag){
 				request.setAttribute(Constants.SYS_MESSAGE, "修改密码成功");
@@ -438,7 +440,7 @@ public class UserServlet extends HttpServlet {
 			
 			
 			
-			request.setAttribute(Constants.SYS_MESSAGE, "修改密码成功");
+			request.setAttribute(Constants.SYS_MESSAGE, "修改密码失败");
 			
 			
 			

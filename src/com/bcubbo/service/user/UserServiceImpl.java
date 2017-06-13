@@ -260,8 +260,9 @@ public class UserServiceImpl implements UserService {
 		
 		Connection connection  = null;
 		try{
-			
 			connection  = BaseDao.getConnection();
+			System.out.println(connection);
+			
 			flag = userDao.updatePwd(connection,id,pwd);
 			//
 			

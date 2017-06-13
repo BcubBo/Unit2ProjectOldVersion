@@ -10,7 +10,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.2.1.js"></script>
 </head>
 <body>
-<form id="passwordSubmit" action="${pageContext.request.contextPath }/user.do" method="post">
+<form id="passwordSubmit" action="${pageContext.request.contextPath }/user.do" method="get">
 <input type="hidden" name="path" id="path" value="${pageContext.request.contextPath }"/>
 <input type="hidden" name="method" value="savepwd"/>
 	<div class="main">
