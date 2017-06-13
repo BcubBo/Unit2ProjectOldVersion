@@ -265,8 +265,11 @@ public class UserDaoImpl implements UserDao{
 		
 		if(connection != null){
 			
-			String sql = "update smbms_user set userPassword = (?) where id = ?";
-			Object [] params = {id,pwd};
+			String sql = "update smbms_user set userPassword =? where id=?";
+			System.out.println("修改对象的id为:"+id);
+			System.out.println("修改的对象的pwd为:"+pwd);
+			Object [] params = {pwd,id};
+			//注意顺序的重要性
 			
 			if(BaseDao.executeSql(connection, preparedStatement, sql, params)>0){
 				

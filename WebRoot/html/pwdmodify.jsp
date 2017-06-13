@@ -19,6 +19,7 @@
 		</div>
 			<div class="content">
 							  <input  type="hidden" id="userId" value="${userInfo.userId}"/>
+								
 				<table class="box"> 
 
 					 <tr>
@@ -35,10 +36,12 @@
 				</tr>
 				</table>
 			</div>
+			
 			<div class="buttons">
 				<input type="button" id="save" value="修改" class="input-button" />
 			</div>
 	</div>
+	<div>${message }</div>
 	</form>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/js/user/pwdmodify.js"></script>
